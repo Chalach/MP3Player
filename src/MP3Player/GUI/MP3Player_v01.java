@@ -46,9 +46,10 @@ public class MP3Player_v01 {
 
 
         JFrame frame = new JFrame("MP3 Player");
-        JButton button = new JButton("Show song");
-        button.addActionListener(new TestActionListener());
-        frame.add(button);
+        frame.setIconImage(new ImageIcon("C:\\Users\\Chalach\\Desktop\\MP3Player\\ImageIcon\\icon.jpg").getImage());
+        //JButton button = new JButton("Show song");
+        //button.addActionListener(new TestActionListener());
+        //frame.add(button);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.getContentPane().add(player);
         frame.setLayout(new FlowLayout());
