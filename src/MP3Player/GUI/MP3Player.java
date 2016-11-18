@@ -1,4 +1,4 @@
-package Frame;
+package MP3Player.GUI;
 
 import jaco.mp3.player.MP3Player;
 import jaco.mp3.player.plaf.MP3PlayerUICompact;
@@ -9,7 +9,7 @@ import java.net.URL;
 import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 
-public class Example7 {
+public class MP3Player {
 
     public static void main(String[] args) throws Exception {
 
@@ -17,7 +17,7 @@ public class Example7 {
 
         //
 
-        MP3Player player = new MP3Player();
+        jaco.mp3.player.MP3Player player = new jaco.mp3.player.MP3Player();
 
         player.setRepeat(true);
 

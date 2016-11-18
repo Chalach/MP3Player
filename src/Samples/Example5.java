@@ -1,3 +1,5 @@
+package Samples;
+
 import jaco.mp3.player.MP3Player;
 import javax.swing.*;
 import java.io.File;
