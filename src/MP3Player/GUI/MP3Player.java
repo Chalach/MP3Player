@@ -1,11 +1,7 @@
 package MP3Player.GUI;
 
-import jaco.mp3.player.MP3Player;
-import jaco.mp3.player.plaf.MP3PlayerUICompact;
-
 import java.io.File;
 import java.net.URL;
-
 import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 
