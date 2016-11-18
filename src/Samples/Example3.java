@@ -13,7 +13,7 @@ public class Example3 {
         File file2 = new File("Music\\test2.mp3");
         File file3 = new File("Music\\test3.mp3");
 
-        // Der MP3Player kann auch mehrere Dateien gleichzeitig abspielen.
+        // Der MP3PlayerGUI kann auch mehrere Dateien gleichzeitig abspielen.
         new MP3Player(file1, file2, file3).play();
     }
 
