@@ -7,10 +7,10 @@ public class TestJFrame extends JFrame {
     public TestJFrame() {
         setTitle("Ein reines, unbeflecktes Frame");  // Fenstertitel setzen
         testJButton.addActionListener(new TestActionListener()); // EventListener für Schaltfläche hinzufügen
-        add(testJButton);                                        // Schaltfläche zum Fenster hinzufügen
+        add(testJButton);                                        // Schaltfläche zum GUI hinzufügen
         pack();
         setSize(200,200);                            // Fenstergröße einstellen
-        // (notwendig, damit das Fenster geschlossen werden kann)
+        // (notwendig, damit das GUI geschlossen werden kann)
         setVisible(true);
     }
 

@@ -1,23 +1,17 @@
-package MP3Player.GUI;
+package GUI.MP3Player;
 
-/*
-    MP3Player funktioniert nur mit .mp3 Dateien!
- */
-
-import GUI.MP3Player.MP3PlayerGUI;
 import jaco.mp3.player.MP3Player;
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
-import java.awt.*;
 import java.io.File;
 import java.util.ArrayList;
 
+public class Main {
 
-public class MP3Player_v01 extends Component {
     private static File path = getPath();
 
-    public static void main(String[] args) throws Exception {
-        //MP3PlayerGUI.main(args);
+    public static void main(String[] args) {
+        MP3PlayerGUI.main(args);
         ArrayList<String> myPlayList = musicFiles();
 
         // Playlist ausgeben
@@ -36,11 +30,9 @@ public class MP3Player_v01 extends Component {
 
         // GUI Player + Fenster
         player.setBorder(BorderFactory.createEmptyBorder(15, 75, 15, 75));
-        GUI fenster = new GUI(player);
-        fenster.setVisible(true);
+        MP3PlayerGUI fenster = new MP3PlayerGUI();
+
     }
-
-
     private static File getPath(){
         JFileChooser fileChooser = new JFileChooser();
         fileChooser.setCurrentDirectory(new java.io.File(".")); // -> Setzt den Pfad auf den zu letzt geöffneten
