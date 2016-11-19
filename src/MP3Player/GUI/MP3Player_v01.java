@@ -13,15 +13,9 @@ public class MP3Player_v01 extends Component {
 
     private static File getPath(){
         JFileChooser fileChooser = new JFileChooser();
-
-        // Setzt den Pfad auf den zu letzt geöffneten
-        fileChooser.setCurrentDirectory(new java.io.File("."));
-
-        // Erlaubt es Dateien und Ordner zu lesen
-        fileChooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
-
-        // Reiter "Alle-Daten" wird dem Nutzer zugänglich gemacht
-        fileChooser.setAcceptAllFileFilterUsed(true);
+        fileChooser.setCurrentDirectory(new java.io.File(".")); // -> Setzt den Pfad auf den zu letzt geöffneten
+        fileChooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES); // -> Erlaubt es Dateien und Ordner zu lesen
+        fileChooser.setAcceptAllFileFilterUsed(true); // -> Reiter "Alle-Daten" wird dem Nutzer zugänglich gemacht
 
         // Filter, welche Dateien angezeigt werden soll
         FileNameExtensionFilter filter = new FileNameExtensionFilter("MP3-Datein", "mp3");
@@ -31,17 +25,7 @@ public class MP3Player_v01 extends Component {
         fileChooser.addChoosableFileFilter(filter);
         fileChooser.addChoosableFileFilter(filter2);
 
-        // Öffnet das Dialog Fenster
-        fileChooser.showOpenDialog(null);
-        /*
-        if (fileChooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
-            System.out.println("getCurrentDirectory(): " +  fileChooser.getCurrentDirectory());
-            System.out.println("getSelectedFile() : " +  fileChooser.getSelectedFile());
-        }
-        else {
-            System.out.println("No Selection ");
-        }*/
-
+        fileChooser.showOpenDialog(null); // -> Öffnet das Dialog Fenster
         return fileChooser.getSelectedFile().getAbsoluteFile();
     }
 
@@ -68,14 +52,11 @@ public class MP3Player_v01 extends Component {
 
         // Neuen MP3PlayerGUI erstellen
         MP3Player player = new MP3Player();
-        // Enable Loop
-        player.setRepeat(true);
-        // Wenn eine .mp3-Datei zu ende gespielt wurde, wird random ein Song aus der PlayList gespielt
-        player.setShuffle(true);
+        player.setRepeat(true); // -> Loop aktivieren
+        player.setShuffle(true); // -> Wenn eine .mp3-Datei zu ende gespielt wurde, wird random ein Song aus der PlayList gespielt
 
-        // Playlist Strings hinzufügen
-        for (int i = 0; i < musicFiles().size(); i++) {
-            player.addToPlayList(new File("Music\\" + myPlayList.get(i)));
+        for (int i = 0; i < musicFiles().size(); i++) { // -> Playlist Strings hinzufügen
+            player.addToPlayList(new File(path + "\\" + myPlayList.get(i)));
         }
 
         // GUI vom Player
@@ -84,14 +65,10 @@ public class MP3Player_v01 extends Component {
 
         // Fenster
         JFrame frame = new JFrame("MP3 Player");
-
-        // Frame Icon
-        frame.setIconImage(new ImageIcon("C:\\Users\\Chalach\\Desktop\\MP3Player\\ImageIcon\\icon.jpg").getImage());
-
-        // Button
-        JButton button = new JButton("Show song");
-        button.addActionListener(new TestActionListener());
-        frame.add(button);
+        frame.setIconImage(new ImageIcon("C:\\Users\\Chalach\\Desktop\\MP3Player\\ImageIcon\\icon.jpg").getImage()); // -> Frame Icon
+        JButton button = new JButton("Show song"); // -> Button
+        button.addActionListener(new TestActionListener(button, frame)); // -> Listener für den Button
+        frame.add(button); // -> Füge den Button zum Fenster hinzu
 
         // Eigentliches Fenster
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // -> legt fest, was passiert, wenn man den Dialog/Programm schließt
@@ -99,6 +76,6 @@ public class MP3Player_v01 extends Component {
         frame.setLayout(new FlowLayout()); // -> notwendig für einen Button
         frame.pack();
         frame.setLocationRelativeTo(null); // -> legt fest, wo das Fenster auftauchen soll: hier ist es in der Mitte
-        frame.setVisible(true);
+        frame.setVisible(true); // -> macht das Fenster sichtbar
     }
 }
