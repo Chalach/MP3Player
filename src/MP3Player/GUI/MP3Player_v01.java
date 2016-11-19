@@ -1,12 +1,16 @@
 package MP3Player.GUI;
 
-import jaco.mp3.player.MP3Player;
+/*
+    MP3Player funktioniert nur mit .mp3 Dateien!
+ */
 
+import jaco.mp3.player.MP3Player;
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.*;
 import java.io.File;
 import java.util.ArrayList;
+
 
 public class MP3Player_v01 extends Component {
     private static File path = getPath();
@@ -15,27 +19,32 @@ public class MP3Player_v01 extends Component {
         JFileChooser fileChooser = new JFileChooser();
         fileChooser.setCurrentDirectory(new java.io.File(".")); // -> Setzt den Pfad auf den zu letzt geöffneten
         fileChooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES); // -> Erlaubt es Dateien und Ordner zu lesen
-        fileChooser.setAcceptAllFileFilterUsed(true); // -> Reiter "Alle-Daten" wird dem Nutzer zugänglich gemacht
 
         // Filter, welche Dateien angezeigt werden soll
         FileNameExtensionFilter filter = new FileNameExtensionFilter("MP3-Datein", "mp3");
-        FileNameExtensionFilter filter2 = new FileNameExtensionFilter("WAV-Datein", "wav");
 
         // Filter hizufügen
         fileChooser.addChoosableFileFilter(filter);
-        fileChooser.addChoosableFileFilter(filter2);
+        fileChooser.setAcceptAllFileFilterUsed(true); // -> Reiter "Alle-Daten" wird dem Nutzer zugänglich gemacht
 
-        fileChooser.showOpenDialog(null); // -> Öffnet das Dialog Fenster
-        return fileChooser.getSelectedFile().getAbsoluteFile();
+        int retrival = fileChooser.showOpenDialog(null); //Auswahl Dialog öffnen
+        if (retrival == JFileChooser.APPROVE_OPTION) {
+            return fileChooser.getSelectedFile().getAbsoluteFile();
+        }
+        return null;
     }
 
     private static ArrayList<String> musicFiles(){
         ArrayList<String> songList = new ArrayList<>();
+        if(path == null){ // -> Sollte der Pfad "null" sein so wird das Programm automatisch beendet
+            System.exit(0);
+        }
         File test = new File(path + "\\");
         String[] DIR = test.list();
 
-        for (int i = 0; i < DIR.length; i++){
-            if(!DIR[i].equals("desktop.ini")){
+        for (int i = 0; i < DIR.length; i++){ // -> Fügt die Ausgewählten Songs zur Playlist hinzu
+            // Es werden nur Dateien mit der Dateiendung .mp3 hinzugefügt + die Datei "desktop.ini" wird ignoriert
+            if(!DIR[i].equals("desktop.ini") && DIR[i].endsWith(".mp3")){
                 songList.add(DIR[i]);
             }
         }
